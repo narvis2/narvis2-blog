@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="flex flex-col items-center justify-center gap-4 pb-16 pt-20 text-center">
       <div className="flex justify-center gap-4">
-        <Link href="https://github.com/d5br5" target="_blank">
+        <Link href="https://github.com/narvis2" target="_blank">
           <GitHubIcon
             className="fill-foreground transition hover:fill-pink-600"
             height={30}
