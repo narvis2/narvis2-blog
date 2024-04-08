@@ -46,7 +46,9 @@ const CategoryList = ({
             <CategoryButton
               key={cg.dirName}
               href={`/home/${cg.dirName}`}
-              displayName={cg.publicName}
+              displayName={
+                cg.publicName === "Eip" ? "정보처리기사" : cg.publicName
+              }
               isCurrent={cg.dirName === currentCategory}
               count={cg.count}
             />

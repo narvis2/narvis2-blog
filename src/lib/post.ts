@@ -1,14 +1,15 @@
-import { HeadingItem, Post, PostMatter, CategoryDetail } from "@/config/types";
-import { sync } from "glob";
-import path from "path";
-import matter from "gray-matter";
-import readingTime from "reading-time";
+import { CategoryDetail, HeadingItem, Post, PostMatter } from "@/config/types";
 import dayjs from "dayjs";
 import fs from "fs";
+import { sync } from "glob";
+import matter from "gray-matter";
+import path from "path";
+import readingTime from "reading-time";
 
 const BASE_PATH = "/src/posts";
 const POSTS_PATH = path.join(process.cwd(), BASE_PATH);
 
+// 모든 MDX 파일 조회
 export const getPostPaths = (category?: string) => {
   const folder = category || "**";
   const postPaths: string[] = sync(`${POSTS_PATH}/${folder}/**/*.mdx`);
@@ -26,6 +27,7 @@ const parsePost = async (postPath: string): Promise<Post> => {
 };
 
 // MDX의 개요 파싱
+// url, cg path, cg name, slug
 export const parsePostAbstract = (postPath: string) => {
   const filePath = postPath
     .slice(postPath.indexOf(BASE_PATH))
@@ -33,7 +35,7 @@ export const parsePostAbstract = (postPath: string) => {
     .replace(".mdx", "");
 
   const [categoryPath, slug] = filePath.split("/");
-  const url = `/blog/${categoryPath}/${slug}`;
+  const url = `/home/${categoryPath}/${slug}`;
   const categoryPublicName = getCategoryPublicName(categoryPath);
   return { url, categoryPath, categoryPublicName, slug };
 };
