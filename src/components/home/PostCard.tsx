@@ -27,7 +27,9 @@ const PostCard = ({ post }: Props) => {
         <div className="flex flex-1 flex-col justify-between p-4 pt-1">
           <div>
             <div className="text-sm font-medium text-pink-600 lg:text-base">
-              {post.categoryPublicName}
+              {post.categoryPublicName === "Eip"
+                ? "정보처리기사"
+                : "post.categoryPublicName"}
             </div>
             <h2 className="mb-3 mt-1 text-lg font-bold sm:text-xl md:text-lg">
               {post.title}
